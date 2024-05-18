@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 62rem;
+  margin-top: 4.4rem;
+}
+
+.logo {
+  width: 15rem;
+}
+
+h1 {
+  color: #fff;
+  font-size: 5.2rem;
+  align-self: center;
+}
