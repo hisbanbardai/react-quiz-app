@@ -1,4 +1,5 @@
 import "../styles/App.css";
+import Error from "./Error";
 import Header from "./Header";
 import Loader from "./Loader";
 import Main from "./Main";
@@ -9,6 +10,7 @@ function App() {
       <Header />
       <Main />
       <Loader />
+      <Error />
     </div>
   );
 }
