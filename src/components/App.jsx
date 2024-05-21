@@ -4,6 +4,7 @@ import Error from "./Error";
 import Header from "./Header";
 import Loader from "./Loader";
 import Main from "./Main";
+import StartScreen from "./StartScreen";
 import { useEffect } from "react";
 
 const initialState = {
@@ -47,9 +48,11 @@ function App() {
   return (
     <div className="app">
       <Header />
-      {state.status === "loading" && <Loader />}
-      {state.status === "error" && <Error />}
-      {state.status === "received" && <Main />}
+      <Main>
+        {state.status === "loading" && <Loader />}
+        {state.status === "error" && <Error />}
+        {state.status === "received" && <StartScreen />}
+      </Main>
     </div>
   );
 }
