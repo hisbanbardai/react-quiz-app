@@ -1,4 +1,5 @@
 import Options from "./Options";
+import "../styles/Question.css";
 
 export default function Question({ question }) {
   return (
