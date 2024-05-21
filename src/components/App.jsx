@@ -6,10 +6,12 @@ import Loader from "./Loader";
 import Main from "./Main";
 import StartScreen from "./StartScreen";
 import { useEffect } from "react";
+import Question from "./Question";
 
 const initialState = {
   status: "loading",
   questions: [],
+  currentQuestionIndex: 0,
 };
 
 function reducer(state, action) {
@@ -19,11 +21,16 @@ function reducer(state, action) {
 
     case "errorReceived":
       return { ...state, status: "error" };
+
+    case "startQuiz":
+      return { ...state, status: "active" };
   }
 }
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const { status, questions, currentQuestionIndex } = state;
 
   useEffect(function () {
     async function fetchData() {
@@ -49,9 +56,12 @@ function App() {
     <div className="app">
       <Header />
       <Main>
-        {state.status === "loading" && <Loader />}
-        {state.status === "error" && <Error />}
-        {state.status === "received" && <StartScreen />}
+        {status === "loading" && <Loader />}
+        {status === "error" && <Error />}
+        {status === "received" && <StartScreen dispatch={dispatch} />}
+        {status === "active" && (
+          <Question question={questions[currentQuestionIndex]} />
+        )}
       </Main>
     </div>
   );
