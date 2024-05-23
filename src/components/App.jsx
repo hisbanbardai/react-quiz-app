@@ -12,6 +12,7 @@ const initialState = {
   status: "loading",
   questions: [],
   currentQuestionIndex: 0,
+  selectedAnswerIndex: null,
 };
 
 function reducer(state, action) {
@@ -24,13 +25,17 @@ function reducer(state, action) {
 
     case "startQuiz":
       return { ...state, status: "active" };
+
+    case "answerSelected":
+      return { ...state, selectedAnswerIndex: action.payLoad };
   }
 }
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { status, questions, currentQuestionIndex } = state;
+  const { status, questions, currentQuestionIndex, selectedAnswerIndex } =
+    state;
 
   useEffect(function () {
     async function fetchData() {
