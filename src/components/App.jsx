@@ -65,7 +65,10 @@ function App() {
         {status === "error" && <Error />}
         {status === "received" && <StartScreen dispatch={dispatch} />}
         {status === "active" && (
-          <Question question={questions[currentQuestionIndex]} />
+          <Question
+            question={questions[currentQuestionIndex]}
+            answer={selectedAnswerIndex}
+          />
         )}
       </Main>
     </div>

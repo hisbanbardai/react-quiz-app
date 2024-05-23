@@ -1,12 +1,12 @@
 import Options from "./Options";
 import "../styles/Question.css";
 
-export default function Question({ question }) {
+export default function Question({ question, answer }) {
   return (
     <div>
       <h4>{question.question}</h4>
       <div className="options">
-        <Options question={question} />
+        <Options question={question} answer={answer} />
       </div>
     </div>
   );
