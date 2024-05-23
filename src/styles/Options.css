@@ -11,17 +11,22 @@
   transition: all 0.3s;
 }
 
-.btn-option:hover {
+.btn-option:not([disabled]):hover {
   background-color: #343a40;
   transform: translateX(12px);
   box-shadow: inset 0 0 0 1px #fff;
 }
 
-.answer {
+.wrong {
   background-color: #ffa94d;
   color: #343a40;
 }
 
 .correct {
   background-color: #1098ad;
+  transform: translateX(20px);
+}
+
+.btn-option[disabled]:hover {
+  cursor: not-allowed;
 }
