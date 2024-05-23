@@ -6,7 +6,7 @@ export default function Question({ question }) {
     <div>
       <h4>{question.question}</h4>
       <div className="options">
-        <Options options={question.options} />
+        <Options question={question} />
       </div>
     </div>
   );
