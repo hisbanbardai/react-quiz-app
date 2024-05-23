@@ -68,6 +68,7 @@ function App() {
           <Question
             question={questions[currentQuestionIndex]}
             answer={selectedAnswerIndex}
+            dispatch={dispatch}
           />
         )}
       </Main>
