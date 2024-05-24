@@ -31,7 +31,15 @@ function reducer(state, action) {
       return { ...state, status: "active" };
 
     case "answerSelected":
-      return { ...state, selectedAnswerIndex: action.payLoad };
+      return {
+        ...state,
+        selectedAnswerIndex: action.payLoad,
+        points:
+          action.payLoad ===
+          state.questions[state.currentQuestionIndex].correctOption
+            ? state.points + state.questions[state.currentQuestionIndex].points
+            : state.points,
+      };
 
     case "nextQuestion":
       return {
