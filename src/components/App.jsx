@@ -100,6 +100,7 @@ function App() {
               currentQuestionIndex={currentQuestionIndex}
               points={points}
               totalPoints={totalPoints}
+              selectedAnswerIndex={selectedAnswerIndex}
             />
             <Question
               question={questions[currentQuestionIndex]}
