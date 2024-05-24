@@ -36,6 +36,14 @@ function reducer(state, action) {
         currentQuestionIndex: state.currentQuestionIndex + 1,
         selectedAnswerIndex: null,
       };
+
+    case "finishQuiz":
+      return {
+        ...state,
+        status: "finish",
+        currentQuestionIndex: 0,
+        selectedAnswerIndex: null,
+      };
   }
 }
 

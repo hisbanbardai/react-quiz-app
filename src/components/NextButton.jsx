@@ -43,7 +43,7 @@ export default function NextButton({
       <div className="next">
         <button
           className="btn"
-          onClick={() => dispatch({ type: "nextQuestion" })}
+          onClick={() => dispatch({ type: "finishQuiz" })}
           ref={nextButtonRef}
         >
           Finish
