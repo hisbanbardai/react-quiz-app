@@ -1,0 +1,14 @@
+progress {
+  width: 100%;
+  font-size: 2.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.progress-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 4.4rem;
+  font-weight: 300;
+}
