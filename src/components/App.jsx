@@ -8,6 +8,7 @@ import StartScreen from "./StartScreen";
 import { useEffect } from "react";
 import Question from "./Question";
 import NextButton from "./NextButton";
+import FinishScreen from "./FinishScreen";
 
 const initialState = {
   status: "loading",
@@ -40,7 +41,7 @@ function reducer(state, action) {
     case "finishQuiz":
       return {
         ...state,
-        status: "finish",
+        status: "finished",
         currentQuestionIndex: 0,
         selectedAnswerIndex: null,
       };
@@ -97,6 +98,7 @@ function App() {
             />
           </>
         )}
+        {status === "finished" && <FinishScreen />}
       </Main>
     </div>
   );
