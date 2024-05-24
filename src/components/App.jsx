@@ -95,7 +95,12 @@ function App() {
         {status === "received" && <StartScreen dispatch={dispatch} />}
         {status === "active" && (
           <>
-            <Progress />
+            <Progress
+              numOfQuestions={numOfQuestions}
+              currentQuestionIndex={currentQuestionIndex}
+              points={points}
+              totalPoints={totalPoints}
+            />
             <Question
               question={questions[currentQuestionIndex]}
               answer={selectedAnswerIndex}
