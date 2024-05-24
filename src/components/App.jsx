@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import Question from "./Question";
 import NextButton from "./NextButton";
 import FinishScreen from "./FinishScreen";
+import Progress from "./Progress";
 
 const initialState = {
   status: "loading",
@@ -85,6 +86,7 @@ function App() {
         {status === "received" && <StartScreen dispatch={dispatch} />}
         {status === "active" && (
           <>
+            <Progress />
             <Question
               question={questions[currentQuestionIndex]}
               answer={selectedAnswerIndex}
