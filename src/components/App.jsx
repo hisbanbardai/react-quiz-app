@@ -7,6 +7,7 @@ import Main from "./Main";
 import StartScreen from "./StartScreen";
 import { useEffect } from "react";
 import Question from "./Question";
+import NextButton from "./NextButton";
 
 const initialState = {
   status: "loading",
@@ -65,11 +66,14 @@ function App() {
         {status === "error" && <Error />}
         {status === "received" && <StartScreen dispatch={dispatch} />}
         {status === "active" && (
-          <Question
-            question={questions[currentQuestionIndex]}
-            answer={selectedAnswerIndex}
-            dispatch={dispatch}
-          />
+          <>
+            <Question
+              question={questions[currentQuestionIndex]}
+              answer={selectedAnswerIndex}
+              dispatch={dispatch}
+            />
+            {selectedAnswerIndex && <NextButton />}
+          </>
         )}
       </Main>
     </div>
