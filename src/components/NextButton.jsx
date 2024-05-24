@@ -1,9 +1,16 @@
 import "../styles/NextButton.css";
 
-export default function NextButton() {
+export default function NextButton({ dispatch, selectedAnswerIndex }) {
   return (
-    <div className="next">
-      <button className="btn">Next</button>
-    </div>
+    selectedAnswerIndex !== null && (
+      <div className="next">
+        <button
+          className="btn"
+          onClick={() => dispatch({ type: "nextQuestion" })}
+        >
+          Next
+        </button>
+      </div>
+    )
   );
 }
