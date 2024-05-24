@@ -16,6 +16,7 @@ const initialState = {
   questions: [],
   currentQuestionIndex: 0,
   selectedAnswerIndex: null,
+  points: 0,
 };
 
 function reducer(state, action) {
@@ -52,10 +53,18 @@ function reducer(state, action) {
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { status, questions, currentQuestionIndex, selectedAnswerIndex } =
-    state;
+  const {
+    status,
+    questions,
+    currentQuestionIndex,
+    selectedAnswerIndex,
+    points,
+  } = state;
 
   const numOfQuestions = questions.length;
+  const totalPoints =
+    questions.length !== 0 &&
+    questions.reduce((acc, question) => acc + Number(question.points), 0);
 
   useEffect(function () {
     async function fetchData() {
