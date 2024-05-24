@@ -45,6 +45,8 @@ function App() {
   const { status, questions, currentQuestionIndex, selectedAnswerIndex } =
     state;
 
+  const numOfQuestions = questions.length;
+
   useEffect(function () {
     async function fetchData() {
       try {
@@ -82,6 +84,8 @@ function App() {
             <NextButton
               dispatch={dispatch}
               selectedAnswerIndex={selectedAnswerIndex}
+              numOfQuestions={numOfQuestions}
+              currentQuestionIndex={currentQuestionIndex}
             />
           </>
         )}
