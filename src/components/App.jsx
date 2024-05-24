@@ -29,6 +29,13 @@ function reducer(state, action) {
 
     case "answerSelected":
       return { ...state, selectedAnswerIndex: action.payLoad };
+
+    case "nextQuestion":
+      return {
+        ...state,
+        currentQuestionIndex: state.currentQuestionIndex + 1,
+        selectedAnswerIndex: null,
+      };
   }
 }
 
@@ -72,7 +79,10 @@ function App() {
               answer={selectedAnswerIndex}
               dispatch={dispatch}
             />
-            {selectedAnswerIndex && <NextButton />}
+            <NextButton
+              dispatch={dispatch}
+              selectedAnswerIndex={selectedAnswerIndex}
+            />
           </>
         )}
       </Main>
