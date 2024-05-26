@@ -9,6 +9,7 @@ export default function FinishScreen({ points, totalPoints, dispatch }) {
         You scored <strong>{points}</strong> out of {totalPoints} ({percentage}
         %)
       </p>
+      <p className="highscore">(Highscore: 50 points)</p>
       <div className="restart">
         <button
           onClick={() => dispatch({ type: "restartQuiz" })}
