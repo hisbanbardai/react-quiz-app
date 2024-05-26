@@ -123,7 +123,7 @@ function App() {
               totalPoints={totalPoints}
               selectedAnswerIndex={selectedAnswerIndex}
             />
-            <Timer />
+            <Timer numOfQuestions={numOfQuestions} dispatch={dispatch} />
             <Question
               question={questions[currentQuestionIndex]}
               answer={selectedAnswerIndex}
