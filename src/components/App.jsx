@@ -55,6 +55,12 @@ function reducer(state, action) {
         currentQuestionIndex: 0,
         selectedAnswerIndex: null,
       };
+
+    case "restartQuiz":
+      return {
+        ...state,
+        status: "received",
+      };
   }
 }
 
@@ -124,7 +130,11 @@ function App() {
           </>
         )}
         {status === "finished" && (
-          <FinishScreen points={points} totalPoints={totalPoints} />
+          <FinishScreen
+            points={points}
+            totalPoints={totalPoints}
+            dispatch={dispatch}
+          />
         )}
       </Main>
     </div>
