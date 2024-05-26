@@ -10,6 +10,7 @@ import Question from "./Question";
 import NextButton from "./NextButton";
 import FinishScreen from "./FinishScreen";
 import Progress from "./Progress";
+import Timer from "./Timer";
 
 const initialState = {
   status: "loading",
@@ -122,6 +123,7 @@ function App() {
               totalPoints={totalPoints}
               selectedAnswerIndex={selectedAnswerIndex}
             />
+            <Timer />
             <Question
               question={questions[currentQuestionIndex]}
               answer={selectedAnswerIndex}
