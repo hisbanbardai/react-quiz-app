@@ -1,6 +1,6 @@
 import "../styles/FinishScreen.css";
 
-export default function FinishScreen({ points, totalPoints }) {
+export default function FinishScreen({ points, totalPoints, dispatch }) {
   const percentage = Math.round((points / totalPoints) * 100);
 
   return (
@@ -10,7 +10,12 @@ export default function FinishScreen({ points, totalPoints }) {
         %)
       </p>
       <div className="restart">
-        <button className="btn">Restart Quiz</button>
+        <button
+          onClick={() => dispatch({ type: "restartQuiz" })}
+          className="btn"
+        >
+          Restart Quiz
+        </button>
       </div>
     </>
   );

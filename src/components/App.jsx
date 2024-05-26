@@ -58,7 +58,8 @@ function reducer(state, action) {
 
     case "restartQuiz":
       return {
-        ...state,
+        ...initialState,
+        questions: state.questions,
         status: "received",
       };
   }
