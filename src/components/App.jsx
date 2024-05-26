@@ -17,6 +17,7 @@ const initialState = {
   currentQuestionIndex: 0,
   selectedAnswerIndex: null,
   points: 0,
+  highScore: 0,
 };
 
 function reducer(state, action) {
@@ -54,6 +55,8 @@ function reducer(state, action) {
         status: "finished",
         currentQuestionIndex: 0,
         selectedAnswerIndex: null,
+        highScore:
+          state.points > state.highScore ? state.points : state.highScore,
       };
 
     case "restartQuiz":
@@ -61,6 +64,7 @@ function reducer(state, action) {
         ...initialState,
         questions: state.questions,
         status: "received",
+        highScore: state.highScore,
       };
   }
 }
@@ -74,6 +78,7 @@ function App() {
     currentQuestionIndex,
     selectedAnswerIndex,
     points,
+    highScore,
   } = state;
 
   const numOfQuestions = questions.length;
@@ -135,6 +140,7 @@ function App() {
             points={points}
             totalPoints={totalPoints}
             dispatch={dispatch}
+            highScore={highScore}
           />
         )}
       </Main>
