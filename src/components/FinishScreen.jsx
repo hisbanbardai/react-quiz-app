@@ -1,10 +1,13 @@
 import "../styles/FinishScreen.css";
 
-export default function FinishScreen() {
+export default function FinishScreen({ points, totalPoints }) {
+  const percentage = Math.round((points / totalPoints) * 100);
+
   return (
     <>
       <p className="result">
-        You scored <strong>20</strong> out of 280 (50%)
+        You scored <strong>{points}</strong> out of {totalPoints} ({percentage}
+        %)
       </p>
       <div className="restart">
         <button className="btn">Restart Quiz</button>

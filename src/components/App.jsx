@@ -123,7 +123,9 @@ function App() {
             />
           </>
         )}
-        {status === "finished" && <FinishScreen />}
+        {status === "finished" && (
+          <FinishScreen points={points} totalPoints={totalPoints} />
+        )}
       </Main>
     </div>
   );
