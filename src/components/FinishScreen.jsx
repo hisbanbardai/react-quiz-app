@@ -1,6 +1,11 @@
 import "../styles/FinishScreen.css";
 
-export default function FinishScreen({ points, totalPoints, dispatch }) {
+export default function FinishScreen({
+  points,
+  totalPoints,
+  dispatch,
+  highScore,
+}) {
   const percentage = Math.round((points / totalPoints) * 100);
 
   return (
@@ -9,7 +14,7 @@ export default function FinishScreen({ points, totalPoints, dispatch }) {
         You scored <strong>{points}</strong> out of {totalPoints} ({percentage}
         %)
       </p>
-      <p className="highscore">(Highscore: 50 points)</p>
+      <p className="highscore">(Highscore: {highScore} points)</p>
       <div className="restart">
         <button
           onClick={() => dispatch({ type: "restartQuiz" })}
