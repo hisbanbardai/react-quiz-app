@@ -1,3 +1,14 @@
+import "../styles/FinishScreen.css";
+
 export default function FinishScreen() {
-  return <h4>Finish Screen</h4>;
+  return (
+    <>
+      <p className="result">
+        You scored <strong>20</strong> out of 280 (50%)
+      </p>
+      <div className="restart">
+        <button className="btn">Restart Quiz</button>
+      </div>
+    </>
+  );
 }
