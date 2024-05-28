@@ -121,7 +121,7 @@ function App() {
         {status === "error" && <Error />}
         {status === "received" && (
           <StartScreen dispatch={dispatch}>
-            <DifficultySelector />
+            <DifficultySelector dispatch={dispatch} />
           </StartScreen>
         )}
         {status === "active" && (
