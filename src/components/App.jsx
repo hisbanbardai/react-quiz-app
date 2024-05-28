@@ -123,7 +123,7 @@ function App() {
         {status === "received" && (
           <StartScreen dispatch={dispatch}>
             <DifficultySelector dispatch={dispatch} />
-            <QuestionSelector />
+            <QuestionSelector difficulty={difficulty} />
           </StartScreen>
         )}
         {status === "active" && (
