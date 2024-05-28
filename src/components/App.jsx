@@ -24,6 +24,8 @@ const initialState = {
   difficulty: "",
 };
 
+let selectedQuestions;
+
 function reducer(state, action) {
   switch (action.type) {
     case "dataReceived":
@@ -33,7 +35,10 @@ function reducer(state, action) {
       return { ...state, status: "error" };
 
     case "difficultySelected":
-      return { ...state, difficulty: action.payLoad };
+      return {
+        ...state,
+        difficulty: action.payLoad,
+      };
 
     case "startQuiz":
       return { ...state, status: "active" };
@@ -44,8 +49,9 @@ function reducer(state, action) {
         selectedAnswerIndex: action.payLoad,
         points:
           action.payLoad ===
-          state.questions[state.currentQuestionIndex].correctOption
-            ? state.points + state.questions[state.currentQuestionIndex].points
+          selectedQuestions[state.currentQuestionIndex].correctOption
+            ? state.points +
+              selectedQuestions[state.currentQuestionIndex].points
             : state.points,
       };
 
@@ -89,10 +95,21 @@ function App() {
     difficulty,
   } = state;
 
-  const numOfQuestions = questions.length;
+  selectedQuestions = questions;
+
+  if (difficulty && difficulty.toLowerCase() !== "all") {
+    selectedQuestions = questions.filter(
+      (question) => question.difficulty.toLowerCase() === difficulty
+    );
+  }
+
+  const numOfQuestions = selectedQuestions.length;
   const totalPoints =
-    questions.length !== 0 &&
-    questions.reduce((acc, question) => acc + Number(question.points), 0);
+    selectedQuestions.length !== 0 &&
+    selectedQuestions.reduce(
+      (acc, question) => acc + Number(question.points),
+      0
+    );
 
   useEffect(function () {
     async function fetchData() {
@@ -137,7 +154,7 @@ function App() {
             />
             <Timer numOfQuestions={numOfQuestions} dispatch={dispatch} />
             <Question
-              question={questions[currentQuestionIndex]}
+              question={selectedQuestions[currentQuestionIndex]}
               answer={selectedAnswerIndex}
               dispatch={dispatch}
             />
