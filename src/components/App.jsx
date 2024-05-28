@@ -20,6 +20,7 @@ const initialState = {
   selectedAnswerIndex: null,
   points: 0,
   highScore: 0,
+  difficulty: "",
 };
 
 function reducer(state, action) {
@@ -29,6 +30,9 @@ function reducer(state, action) {
 
     case "errorReceived":
       return { ...state, status: "error" };
+
+    case "difficultySelected":
+      return { ...state, difficulty: action.payLoad };
 
     case "startQuiz":
       return { ...state, status: "active" };
@@ -81,6 +85,7 @@ function App() {
     selectedAnswerIndex,
     points,
     highScore,
+    difficulty,
   } = state;
 
   const numOfQuestions = questions.length;
