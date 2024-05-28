@@ -22,9 +22,8 @@ const initialState = {
   points: 0,
   highScore: 0,
   difficulty: "",
+  selectedQuestions: [],
 };
-
-let selectedQuestions;
 
 function reducer(state, action) {
   switch (action.type) {
@@ -40,6 +39,12 @@ function reducer(state, action) {
         difficulty: action.payLoad,
       };
 
+    case "updateSelectedQuestions":
+      return {
+        ...state,
+        selectedQuestions: action.payLoad,
+      };
+
     case "startQuiz":
       return { ...state, status: "active" };
 
@@ -49,9 +54,9 @@ function reducer(state, action) {
         selectedAnswerIndex: action.payLoad,
         points:
           action.payLoad ===
-          selectedQuestions[state.currentQuestionIndex].correctOption
+          state.selectedQuestions[state.currentQuestionIndex].correctOption
             ? state.points +
-              selectedQuestions[state.currentQuestionIndex].points
+              state.selectedQuestions[state.currentQuestionIndex].points
             : state.points,
       };
 
@@ -79,6 +84,9 @@ function reducer(state, action) {
         status: "received",
         highScore: state.highScore,
       };
+
+    default:
+      console.error("Unknown action type");
   }
 }
 
@@ -93,15 +101,8 @@ function App() {
     points,
     highScore,
     difficulty,
+    selectedQuestions,
   } = state;
-
-  selectedQuestions = questions;
-
-  if (difficulty && difficulty.toLowerCase() !== "all") {
-    selectedQuestions = questions.filter(
-      (question) => question.difficulty.toLowerCase() === difficulty
-    );
-  }
 
   const numOfQuestions = selectedQuestions.length;
   const totalPoints =
@@ -115,12 +116,12 @@ function App() {
     async function fetchData() {
       try {
         const res = await fetch("/api/questions");
-        console.log(res);
+        // console.log(res);
 
         if (!res.ok) throw new Error("Unable to fetch data");
 
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         dispatch({ type: "dataReceived", payLoad: data });
       } catch (error) {
         console.error(error.message);
@@ -130,6 +131,23 @@ function App() {
 
     fetchData();
   }, []);
+
+  useEffect(
+    function () {
+      let filteredQuestions = questions;
+
+      if (difficulty && difficulty.toLowerCase() !== "all") {
+        filteredQuestions = questions.filter(
+          (question) => question.difficulty.toLowerCase() === difficulty
+        );
+      }
+      dispatch({
+        type: "updateSelectedQuestions",
+        payLoad: filteredQuestions,
+      });
+    },
+    [difficulty, questions]
+  );
 
   return (
     <div className="app">
