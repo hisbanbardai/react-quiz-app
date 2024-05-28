@@ -12,6 +12,7 @@ import FinishScreen from "./FinishScreen";
 import Progress from "./Progress";
 import Timer from "./Timer";
 import DifficultySelector from "./DifficultySelector";
+import QuestionSelector from "./QuestionSelector";
 
 const initialState = {
   status: "loading",
@@ -122,6 +123,7 @@ function App() {
         {status === "received" && (
           <StartScreen dispatch={dispatch}>
             <DifficultySelector dispatch={dispatch} />
+            <QuestionSelector />
           </StartScreen>
         )}
         {status === "active" && (
