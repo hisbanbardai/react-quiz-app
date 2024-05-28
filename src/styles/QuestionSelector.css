@@ -1,0 +1,11 @@
+.questions-label {
+  font-size: 2rem;
+  color: #fff;
+}
+.questions-range {
+  width: 50%;
+}
+.questions-total {
+  color: #fff;
+  font-size: 2rem;
+}

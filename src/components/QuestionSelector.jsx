@@ -1,3 +1,5 @@
+import "../styles/QuestionSelector.css";
+
 export default function QuestionSelector() {
   return (
     <>
