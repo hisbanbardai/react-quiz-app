@@ -1,0 +1,8 @@
+.difficulty {
+  font-size: 1.8rem;
+  color: #fff;
+  background-color: #495057;
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  cursor: pointer;
+}

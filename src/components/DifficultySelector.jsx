@@ -1,3 +1,5 @@
+import "../styles/DifficultySelector.css";
+
 export default function DifficultySelector() {
   return (
     <select name="difficulty" className="difficulty">
