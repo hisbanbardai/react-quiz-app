@@ -11,6 +11,7 @@ import NextButton from "./NextButton";
 import FinishScreen from "./FinishScreen";
 import Progress from "./Progress";
 import Timer from "./Timer";
+import DifficultySelector from "./DifficultySelector";
 
 const initialState = {
   status: "loading",
@@ -113,7 +114,11 @@ function App() {
       <Main>
         {status === "loading" && <Loader />}
         {status === "error" && <Error />}
-        {status === "received" && <StartScreen dispatch={dispatch} />}
+        {status === "received" && (
+          <StartScreen dispatch={dispatch}>
+            <DifficultySelector />
+          </StartScreen>
+        )}
         {status === "active" && (
           <>
             <Progress

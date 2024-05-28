@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../styles/Timer.css";
 
 export default function Timer({ numOfQuestions, dispatch }) {
-  const [timer, setTimer] = useState(numOfQuestions ? numOfQuestions * 1 : 0);
+  const [timer, setTimer] = useState(numOfQuestions ? numOfQuestions * 60 : 0);
 
   if (timer <= 0) {
     dispatch({ type: "finishQuiz" });
