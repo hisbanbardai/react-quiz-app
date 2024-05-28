@@ -15,7 +15,7 @@ export default function Progress({
       ></progress>
       <div className="progress-details">
         <p>
-          Question <b>{currentQuestionIndex + 1}</b>/15
+          Question <b>{currentQuestionIndex + 1}</b>/{numOfQuestions}
         </p>
         <p>
           <b>{points}</b>/{totalPoints} points
