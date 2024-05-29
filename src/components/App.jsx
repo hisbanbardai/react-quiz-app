@@ -23,12 +23,18 @@ const initialState = {
   highScore: 0,
   difficulty: "",
   selectedQuestions: [],
+  currentNumOfQuestions: 0,
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case "dataReceived":
-      return { ...state, status: "received", questions: action.payLoad };
+      return {
+        ...state,
+        status: "received",
+        questions: action.payLoad,
+        currentNumOfQuestions: action.payLoad.length,
+      };
 
     case "errorReceived":
       return { ...state, status: "error" };
@@ -43,6 +49,13 @@ function reducer(state, action) {
       return {
         ...state,
         selectedQuestions: action.payLoad,
+        currentNumOfQuestions: action.payLoad.length,
+      };
+
+    case "updateNumOfQuestions":
+      return {
+        ...state,
+        currentNumOfQuestions: action.payLoad,
       };
 
     case "startQuiz":
@@ -102,15 +115,15 @@ function App() {
     highScore,
     difficulty,
     selectedQuestions,
+    currentNumOfQuestions,
   } = state;
 
-  const numOfQuestions = selectedQuestions.length;
+  //Calculation total points based on current number of questions
   const totalPoints =
     selectedQuestions.length !== 0 &&
-    selectedQuestions.reduce(
-      (acc, question) => acc + Number(question.points),
-      0
-    );
+    selectedQuestions
+      .slice(0, currentNumOfQuestions)
+      .reduce((acc, question) => acc + Number(question.points), 0);
 
   useEffect(function () {
     async function fetchData() {
@@ -158,19 +171,24 @@ function App() {
         {status === "received" && (
           <StartScreen dispatch={dispatch}>
             <DifficultySelector dispatch={dispatch} />
-            <QuestionSelector difficulty={difficulty} />
+            <QuestionSelector
+              difficulty={difficulty}
+              numOfQuestions={currentNumOfQuestions}
+              selectedQuestions={selectedQuestions}
+              dispatch={dispatch}
+            />
           </StartScreen>
         )}
         {status === "active" && (
           <>
             <Progress
-              numOfQuestions={numOfQuestions}
+              numOfQuestions={currentNumOfQuestions}
               currentQuestionIndex={currentQuestionIndex}
               points={points}
               totalPoints={totalPoints}
               selectedAnswerIndex={selectedAnswerIndex}
             />
-            <Timer numOfQuestions={numOfQuestions} dispatch={dispatch} />
+            <Timer numOfQuestions={currentNumOfQuestions} dispatch={dispatch} />
             <Question
               question={selectedQuestions[currentQuestionIndex]}
               answer={selectedAnswerIndex}
@@ -179,7 +197,7 @@ function App() {
             <NextButton
               dispatch={dispatch}
               selectedAnswerIndex={selectedAnswerIndex}
-              numOfQuestions={numOfQuestions}
+              numOfQuestions={currentNumOfQuestions}
               currentQuestionIndex={currentQuestionIndex}
             />
           </>
