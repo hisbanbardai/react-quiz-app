@@ -26,6 +26,7 @@ const initialState = {
   difficulty: "",
   selectedQuestions: [],
   currentNumOfQuestions: 0,
+  answers: [],
 };
 
 function reducer(state, action) {
@@ -67,6 +68,7 @@ function reducer(state, action) {
       return {
         ...state,
         selectedAnswerIndex: action.payLoad,
+        answers: [...state.answers, action.payLoad],
         points:
           action.payLoad ===
           state.selectedQuestions[state.currentQuestionIndex].correctOption
