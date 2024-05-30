@@ -197,7 +197,7 @@ function App() {
               dispatch={dispatch}
             />
             <footer className="footer">
-              <PreviousButton />
+              <PreviousButton currentQuestionIndex={currentQuestionIndex} />
               <NextButton
                 dispatch={dispatch}
                 selectedAnswerIndex={selectedAnswerIndex}

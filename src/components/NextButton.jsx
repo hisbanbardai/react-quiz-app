@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import "../styles/NextButton.css";
 
 export default function NextButton({
   dispatch,
@@ -23,7 +24,7 @@ export default function NextButton({
   ) {
     return (
       <button
-        className="btn"
+        className="btn next"
         onClick={() => dispatch({ type: "nextQuestion" })}
         ref={nextButtonRef}
       >
@@ -37,15 +38,13 @@ export default function NextButton({
     currentQuestionIndex + 1 === numOfQuestions
   ) {
     return (
-      <div className="next">
-        <button
-          className="btn"
-          onClick={() => dispatch({ type: "finishQuiz" })}
-          ref={nextButtonRef}
-        >
-          Finish
-        </button>
-      </div>
+      <button
+        className="btn next"
+        onClick={() => dispatch({ type: "finishQuiz" })}
+        ref={nextButtonRef}
+      >
+        Finish
+      </button>
     );
   }
 }

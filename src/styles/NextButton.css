@@ -1,0 +1,4 @@
+.next {
+  justify-self: end;
+  grid-column: 2;
+}
