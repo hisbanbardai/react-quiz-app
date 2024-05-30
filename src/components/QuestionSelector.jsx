@@ -8,10 +8,9 @@ export default function QuestionSelector({
   dispatch,
 }) {
   function handleChange(e) {
-    console.log("g");
     dispatch({
       type: "updateNumOfQuestions",
-      payLoad: Number(e.target.value),
+      payLoad: Number(e.target.value) ? Number(e.target.value) : 1,
     });
   }
 
