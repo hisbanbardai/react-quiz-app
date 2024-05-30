@@ -3,6 +3,7 @@ import "../styles/DifficultySelector.css";
 export default function DifficultySelector({ dispatch }) {
   return (
     <select
+      required
       name="difficulty"
       className="difficulty"
       onChange={(e) =>
