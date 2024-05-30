@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   width: 62rem;
-  margin: 4.4rem 0;
+  margin-bottom: 4.4rem;
 }
 
 .logo {
