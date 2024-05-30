@@ -24,6 +24,9 @@
 
 .correct {
   background-color: #1098ad;
+}
+
+.answer {
   transform: translateX(20px);
 }
 

@@ -9,7 +9,7 @@ export default function Options({ question, answer, dispatch }) {
             ? "correct"
             : "wrong"
           : ""
-      }`}
+      } ${answer === index ? "answer" : ""}`}
       key={option}
       onClick={() => dispatch({ type: "answerSelected", payLoad: index })}
       disabled={answer !== null}
