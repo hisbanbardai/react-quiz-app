@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 import "../styles/App.css";
+import "../styles/Footer.css";
 import Error from "./Error";
 import Header from "./Header";
 import Loader from "./Loader";
@@ -13,6 +14,7 @@ import Progress from "./Progress";
 import Timer from "./Timer";
 import DifficultySelector from "./DifficultySelector";
 import QuestionSelector from "./QuestionSelector";
+import PreviousButton from "./PreviousButton";
 
 const initialState = {
   status: "loading",
@@ -194,12 +196,15 @@ function App() {
               answer={selectedAnswerIndex}
               dispatch={dispatch}
             />
-            <NextButton
-              dispatch={dispatch}
-              selectedAnswerIndex={selectedAnswerIndex}
-              numOfQuestions={currentNumOfQuestions}
-              currentQuestionIndex={currentQuestionIndex}
-            />
+            <footer className="footer">
+              <PreviousButton />
+              <NextButton
+                dispatch={dispatch}
+                selectedAnswerIndex={selectedAnswerIndex}
+                numOfQuestions={currentNumOfQuestions}
+                currentQuestionIndex={currentQuestionIndex}
+              />
+            </footer>
           </>
         )}
         {status === "finished" && (
