@@ -1,0 +1,21 @@
+/* ********************** */
+/* BELOW 768px (Tablets)*/
+/* ********************** */
+
+@media (max-width: 48em) {
+  html {
+    font-size: 56.25%;
+  }
+
+  .header {
+    width: 52rem;
+  }
+
+  .logo {
+    width: 13rem;
+  }
+
+  h1 {
+    font-size: 4.4rem;
+  }
+}
