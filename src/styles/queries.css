@@ -18,4 +18,18 @@
   h1 {
     font-size: 4.4rem;
   }
+
+  h2 {
+    font-size: 3rem;
+  }
+}
+
+/* ********************** */
+/* BELOW 575px (Mobile phones)*/
+/* ********************** */
+
+@media (max-width: 36em) {
+  html {
+    font-size: 50%;
+  }
 }
