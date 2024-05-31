@@ -19,7 +19,7 @@ This is a React quiz application that fetches quiz questions from a JSON server.
 1. **Clone the repository:**
 
 ```
-git clone https://github.com/your-username/react-quiz-app.git
+git clone https://github.com/hisbanbardai/react-quiz-app.git
 cd react-quiz-app
 ```
 
@@ -71,4 +71,4 @@ npm run build
 
 ## Live Demo
 
-You can access the live demo of the application [here](https://react-knowledge-quiz.netlify.app).
+You can access the live demo of the application [here](https://react-knowledge-quiz.netlify.app){:target="\_blank"}.
