@@ -16,6 +16,8 @@ import DifficultySelector from "./DifficultySelector";
 import QuestionSelector from "./QuestionSelector";
 import PreviousButton from "./PreviousButton";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const initialState = {
   status: "loading",
   questions: [],
@@ -143,7 +145,7 @@ function App() {
   useEffect(function () {
     async function fetchData() {
       try {
-        const res = await fetch("/api/questions");
+        const res = await fetch(`${API_URL}/questions`);
         // console.log(res);
 
         if (!res.ok) throw new Error("Unable to fetch data");
