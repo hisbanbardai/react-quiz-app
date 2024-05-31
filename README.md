@@ -71,4 +71,4 @@ npm run build
 
 ## Live Demo
 
-You can access the live demo of the application [here](https://react-knowledge-quiz.netlify.app){:target="\_blank"}.
+You can access the live demo of the application <a href="https://react-knowledge-quiz.netlify.app/" target="_blank">here</a>.
