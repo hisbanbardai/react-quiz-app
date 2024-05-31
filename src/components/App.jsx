@@ -77,11 +77,22 @@ function reducer(state, action) {
             : state.points,
       };
 
+    case "previousQuestion":
+      console.log(state.currentQuestionIndex);
+      return {
+        ...state,
+        currentQuestionIndex: state.currentQuestionIndex - 1,
+        selectedAnswerIndex: state.answers[state.currentQuestionIndex - 1],
+      };
+
     case "nextQuestion":
       return {
         ...state,
         currentQuestionIndex: state.currentQuestionIndex + 1,
-        selectedAnswerIndex: null,
+        selectedAnswerIndex:
+          state.answers[state.currentQuestionIndex + 1] !== undefined
+            ? state.answers[state.currentQuestionIndex + 1]
+            : null,
       };
 
     case "finishQuiz":
@@ -199,7 +210,10 @@ function App() {
               dispatch={dispatch}
             />
             <footer className="footer">
-              <PreviousButton currentQuestionIndex={currentQuestionIndex} />
+              <PreviousButton
+                currentQuestionIndex={currentQuestionIndex}
+                dispatch={dispatch}
+              />
               <NextButton
                 dispatch={dispatch}
                 selectedAnswerIndex={selectedAnswerIndex}

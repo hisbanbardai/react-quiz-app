@@ -1,13 +1,13 @@
 import { useRef } from "react";
 
-export default function PreviousButton({ currentQuestionIndex }) {
+export default function PreviousButton({ currentQuestionIndex, dispatch }) {
   const previousButtonRef = useRef(null);
 
   return (
     currentQuestionIndex > 0 && (
       <button
         className="btn"
-        // onClick={() => dispatch({ type: "nextQuestion" })}
+        onClick={() => dispatch({ type: "previousQuestion" })}
         ref={previousButtonRef}
       >
         Previous
